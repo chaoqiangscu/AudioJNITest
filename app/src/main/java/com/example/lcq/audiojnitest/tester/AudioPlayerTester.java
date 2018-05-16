@@ -3,6 +3,7 @@ package com.example.lcq.audiojnitest.tester;
 import android.os.Environment;
 
 import com.example.lcq.audiojnitest.api.audio.AudioPlayer;
+import com.example.lcq.audiojnitest.api.jniutils.JniUtils;
 import com.example.lcq.audiojnitest.api.wav.WavFileReader;
 
 import java.io.IOException;
@@ -46,8 +47,10 @@ public class AudioPlayerTester extends Tester {
         @Override
         public void run() {
             byte[] buffer = new byte[SAMPLES_PER_FRAME * 8];        //注意：在此处可修改每次读入的字节数
+            byte[] result;
             while (!mIsTestingExit && mWavFileReader.readData(buffer, 0, buffer.length) > 0) {
-                mAudioPlayer.play(buffer, 0, buffer.length);
+                result = JniUtils.wavFile(buffer);    //使用C++代码对数据进行处理
+                mAudioPlayer.play(result, 0, result.length);
             }
             mAudioPlayer.stopPlayer();
             try {
@@ -57,4 +60,5 @@ public class AudioPlayerTester extends Tester {
             }
         }
     };
+
 }

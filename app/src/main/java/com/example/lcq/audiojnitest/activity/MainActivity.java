@@ -11,6 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.lcq.audiojnitest.R;
+import com.example.lcq.audiojnitest.api.jniutils.JniUtils;
 import com.example.lcq.audiojnitest.tester.AudioPlayerTester;
 
 public class MainActivity extends AppCompatActivity {
@@ -30,8 +31,8 @@ public class MainActivity extends AppCompatActivity {
         requestPermission();
 
         // Example of a call to a native method
-        /*TextView tv = (TextView) findViewById(R.id.sample_text);
-        tv.setText(stringFromJNI());*/
+        TextView tv = (TextView) findViewById(R.id.sample_text);
+        tv.setText(JniUtils.stringFromJNI());
         Button start = (Button)findViewById(R.id.start);
         Button stop = (Button)findViewById(R.id.stop);
     }
@@ -74,5 +75,7 @@ public class MainActivity extends AppCompatActivity {
      * A native method that is implemented by the 'native-lib' native library,
      * which is packaged with this application.
      */
-    public native String stringFromJNI();
+    /*public native String stringFromJNI();
+    public native byte[] wavFile(byte[] buf,int size);*/
+
 }

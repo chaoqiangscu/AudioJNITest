@@ -10,12 +10,17 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_centerInParent="true">
+        <TextView
+            android:id="@+id/sample_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
         <Button
             android:id="@+id/start"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="播放"
-            android:onClick="startPlaying"/>
+            android:onClick="startPlaying"
+            android:layout_marginTop="30dp"/>
         <Button
             android:id="@+id/stop"
             android:layout_width="wrap_content"
@@ -23,11 +28,6 @@
             android:text="停止"
             android:layout_marginTop="30dp"
             android:onClick="stopPlaying"/>
-        <!--<TextView
-            android:id="@+id/sample_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />-->
     </LinearLayout>
-
 
 </RelativeLayout>
