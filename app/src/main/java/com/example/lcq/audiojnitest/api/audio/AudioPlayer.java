@@ -23,8 +23,8 @@ public class AudioPlayer {
     private static final String TAG = "AudioPlayer";
 
     private static final int DEFAULT_STREAM_TYPE = AudioManager.STREAM_MUSIC;
-    private static final int DEFAULT_SAMPLE_RATE = 141100;//44100;  //会影响播放速度
-    private static final int DEFAULT_CHANNEL_CONFIG = AudioFormat.CHANNEL_OUT_MONO;
+    private static final int DEFAULT_SAMPLE_RATE = 44100;//96000;//141100;//44100;  //会影响播放速度
+    private static final int DEFAULT_CHANNEL_CONFIG = AudioFormat.CHANNEL_IN_STEREO;
     private static final int DEFAULT_AUDIO_FORMAT = AudioFormat.ENCODING_PCM_16BIT;
     private static final int DEFAULT_PLAY_MODE = AudioTrack.MODE_STREAM;
 

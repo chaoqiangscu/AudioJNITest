@@ -46,10 +46,15 @@ public class AudioPlayerTester extends Tester {
     private Runnable AudioPlayRunnable = new Runnable() {
         @Override
         public void run() {
-            byte[] buffer = new byte[SAMPLES_PER_FRAME * 8];        //注意：在此处可修改每次读入的字节数
-            byte[] result;
+            byte[] buffer = new byte[SAMPLES_PER_FRAME * 2 * 2];        //注意：在此处可修改每次读入的字节数
+            double[] trance = new double[SAMPLES_PER_FRAME * 2 * 8];
+            byte[] result = new byte[SAMPLES_PER_FRAME * 2 * 2];
             while (!mIsTestingExit && mWavFileReader.readData(buffer, 0, buffer.length) > 0) {
-                result = JniUtils.wavFile(buffer);    //使用C++代码对数据进行处理
+                //使用C++代码对数据进行处理
+                //result = JniUtils.wavFile(buffer);  //原来的测试程序
+                JniUtils.wavByte2Double(buffer,trance,buffer.length);
+                JniUtils.wavDouble2Byte(trance,result,trance.length);
+
                 mAudioPlayer.play(result, 0, result.length);
             }
             mAudioPlayer.stopPlayer();
